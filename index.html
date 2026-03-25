@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<title>Rangla Punjab Family Dhaba | Authentic Punjabi Cuisine</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700&family=Poppins:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0B1F3A;
+  --navy-dark: #08172B;
+  --gold: #D4AF37;
+  --gold-soft: #E6C55A;
+  --gold-dark: #A8892A;
+  --gold-dim: rgba(212, 175, 55, 0.25);
+  --white: #F5F5F5;
+  --grey: #CFCFCF;
+  --red: #C0392B;
+  --green: #27AE60;
+  --font-cinzel: 'Cinzel', serif;
+  --font-playfair: 'Playfair Display', serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--navy-dark);
+  color: var(--white);
+}
+
+/* Screen system */
+.screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.screen.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.97);
+}
+
+/* Texture overlay */
+.texture {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.015), rgba(255, 255, 255, 0.015) 1px, transparent 1px, transparent 8px),
+              repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.01) 1px, transparent 1px, transparent 8px);
+}
+
+/* ========== LANDING PAGE - Centered Content ========== */
+#landing {
+  background: radial-gradient(ellipse at 50% 20%, #1a3460 0%, #0B1F3A 45%, #08172B 100%);
+  align-items: center;
+  justify-content: center;  /* center vertically */
+  overflow: hidden;
+  position: relative;
+}
+
+/* Ambient particles */
+.amb-particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, var(--gold-soft), transparent);
+  animation: floatParticle var(--t) ease-in-out infinite;
+  opacity: 0;
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  20% {
+    opacity: var(--op);
+  }
+  80% {
+    opacity: var(--op);
+  }
+  100% {
+    transform: translateY(-80px) scale(0.6);
+    opacity: 0;
+  }
+}
+
+/* Content container - centered */
+.landing-content {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  width: 100%;
+  height: 100vh;
+
+  max-width: 900px;
+  margin: 0 auto;
+
+  padding: 40px 20px;
+
+  backdrop-filter: blur(10px); /* glass effect */
+}
+
+/* Crown wrapper with pulse ring */
+.crown-wrap {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  position: relative;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.1), transparent);
+  animation: crownGlow 3s ease-in-out infinite;
+}
+
+@keyframes crownGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.3), 0 0 20px rgba(212, 175, 55, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(212, 175, 55, 0), 0 0 40px rgba(212, 175, 55, 0.2);
+  }
+}
+
+.crown-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 50%;
+}
+
+.crown-icon {
+  font-size: 38px;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+}
+
+/* Typography */
+.landing-pretitle,
+.landing-title,
+.landing-subtitle,
+.landing-tagline,
+.gold-divider,
+.open-menu-btn,
+.landing-info {
+  opacity: 0;
+  animation: slideUpFade 0.8s ease forwards;
+}
+
+.landing-pretitle {
+  font-family: var(--font-cinzel);
+  font-size: clamp(8px, 2vw, 11px);
+  letter-spacing: 5px;
+  color: var(--gold-dark);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  animation-delay: 0.3s;
+}
+
+.landing-title {
+  font-family: var(--font-cinzel);
+  font-size: clamp(28px, 8vw, 56px);
+  font-weight: 700;
+  line-height: 1.1;
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold), #F9E076);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 2px 20px rgba(212, 175, 55, 0.4));
+  animation-delay: 0.5s;
+}
+
+.landing-subtitle {
+  font-family: var(--font-cinzel);
+  font-size: clamp(10px, 2.5vw, 14px);
+  letter-spacing: 6px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  animation-delay: 0.7s;
+}
+
+.landing-tagline {
+  font-family: var(--font-playfair);
+  font-style: italic;
+  font-size: clamp(12px, 3vw, 16px);
+  color: var(--grey);
+  margin-bottom: 32px;
+  animation-delay: 0.9s;
+}
+
+/* Gold divider */
+.gold-divider {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 auto 28px;
+  animation-delay: 1.1s;
+}
+
+.gold-divider::before,
+.gold-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.gold-divider span {
+  color: var(--gold);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* Button */
+.open-menu-btn {
+  font-family: var(--font-cinzel);
+  font-size: clamp(11px, 3vw, 14px);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--navy-dark);
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold), var(--gold-dark));
+  border: none;
+  cursor: pointer;
+  padding: 15px 48px;
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+  animation-delay: 1.3s;
+}
+
+.open-menu-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-soft));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.open-menu-btn:hover::before {
+  opacity: 1;
+}
+
+.open-menu-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
+}
+
+.open-menu-btn span {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Info pills */
+.landing-info {
+  margin-top: 24px;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation-delay: 1.5s;
+}
+
+.info-pill {
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 5px 14px;
+  border-radius: 20px;
+  background: rgba(8, 23, 43, 0.3);
+  transition: all 0.3s ease;
+}
+
+.info-pill:hover {
+  border-color: var(--gold);
+  background: rgba(212, 175, 55, 0.1);
+  transform: translateY(-2px);
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== MENU SCREEN (unchanged) ========== */
+#menuScreen {
+  background: var(--navy-dark);
+  flex-direction: column;
+}
+
+.menu-header {
+  background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-dark) 100%);
+  border-bottom: 1px solid var(--gold-dim);
+  padding: 0;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 23px 9px;
+}
+
+.header-logo {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(16px, 4.3vw, 23px);
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+
+.header-logo small {
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  color: var(--gold-dark);
+  -webkit-text-fill-color: var(--gold-dark);
+}
+
+.back-btn {
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: var(--gold-dark);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  background: transparent;
+  cursor: pointer;
+  padding: 7px 14px;
+  border-radius: 3px;
+  transition: all 0.3s;
+  text-transform: uppercase;
+}
+
+.back-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.menu-tabs {
+  display: flex;
+  gap: 0;
+  border-top: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 15px 12px;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(13.5px, 3.87vw, 17.1px);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--grey);
+  position: relative;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+.tab-btn.active {
+  color: var(--gold);
+}
+
+.tab-btn.active::after {
+  transform: scaleX(1);
+}
+
+.tab-btn:hover {
+  color: var(--gold-soft);
+}
+
+.tab-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  flex-shrink: 0;
+}
+
+.tab-dot.veg {
+  background: var(--green);
+  border-color: var(--green);
+}
+
+.tab-dot.nonveg {
+  background: var(--red);
+  border-color: var(--red);
+}
+
+.menu-body {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.menu-pages-wrap {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-page {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  padding: 16px 14px 80px;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: none;
+  scrollbar-width: thin;
+}
+
+.menu-page.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.cat-block {
+  margin-bottom: 22px;
+}
+
+.cat-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  position: sticky;
+  top: 0;
+  background: var(--navy-dark);
+  z-index: 5;
+  padding-top: 4px;
+}
+
+.cat-icon {
+  font-size: 18px;
+}
+
+.cat-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(11px, 3.5vw, 15px);
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  font-weight: 600;
+  flex: 1;
+}
+
+.cat-count {
+  font-family: 'Poppins', sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  color: rgba(212, 175, 55, 0.5);
+  letter-spacing: 1px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: baseline;
+  padding: 8px 6px;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.1);
+  transition: all 0.25s ease;
+  border-radius: 4px;
+  gap: 8px;
+}
+
+.menu-item:hover {
+  background: rgba(212, 175, 55, 0.06);
+  transform: translateX(4px);
+}
+
+.item-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.item-dot.veg {
+  background: rgba(39, 174, 96, 0.3);
+  border-color: var(--green);
+}
+
+.item-dot.nonveg {
+  background: rgba(192, 57, 43, 0.3);
+  border-color: var(--red);
+}
+
+.item-name {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(12px, 3.5vw, 15px);
+  font-weight: 400;
+  color: var(--white);
+  flex: 1;
+  line-height: 1.4;
+}
+
+.item-dots-line {
+  flex: 1;
+  min-width: 20px;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.2);
+  margin-bottom: 4px;
+}
+
+.item-price {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(12px, 3.5vw, 14px);
+  font-weight: 600;
+  color: var(--gold-soft);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.item-price::before {
+  content: '₹';
+}
+
+.hf-price {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.hf-tag {
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--gold-dark);
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  padding: 1px 6px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.3;
+}
+
+.hf-tag strong {
+  font-size: 12px;
+  color: var(--gold-soft);
+}
+
+.hf-tag strong::before {
+  content: '₹';
+}
+
+.menu-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(0deg, var(--navy-dark) 60%, transparent);
+  padding: 12px 16px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 100;
+}
+
+.nav-arrow {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1.5px solid var(--gold-dark);
+  background: rgba(8, 23, 43, 0.95);
+  color: var(--gold);
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.nav-arrow:hover {
+  border-color: var(--gold);
+  background: rgba(212, 175, 55, 0.1);
+  transform: scale(1.08);
+}
+
+.nav-arrow:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.nav-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 100px;
+}
+
+.nav-page-name {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--gold-dark);
+  text-transform: uppercase;
+}
+
+.nav-pi-dots {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+}
+
+.nav-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.25);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.nav-dot.active {
+  background: var(--gold);
+  transform: scale(1.4);
+  box-shadow: 0 0 6px var(--gold);
+}
+
+#overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--navy-dark);
+  z-index: 500;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+
+#overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+@media (max-width: 380px) {
+  .landing-title {
+    font-size: 28px;
+  }
+
+  .open-menu-btn {
+    padding: 12px 32px;
+    font-size: 11px;
+  }
+
+  .menu-item {
+    padding: 7px 4px;
+  }
+
+  .item-name {
+    font-size: 13px;
+  }
+
+  .item-price {
+    font-size: 13px;
+  }
+
+  .cat-title {
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+
+  .nav-arrow {
+    width: 42px;
+    height: 42px;
+    font-size: 16px;
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .landing-content {
+    padding: 10px;
+  }
+
+  .crown-wrap {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 12px;
+  }
+
+  .crown-icon {
+    font-size: 28px;
+  }
+
+  .landing-tagline {
+    display: none;
+  }
+
+  .landing-info {
+    display: none;
+  }
+
+  .menu-header .header-top {
+    padding: 6px 16px 4px;
+  }
+
+  .menu-page {
+    padding: 10px 14px 70px;
+  }
+}
+</style>
+</head>
+<body>
+<div id="overlay"></div>
+
+<!-- LANDING PAGE - Centered Content -->
+<div class="screen" id="landing">
+  <div class="texture"></div>
+  <div id="amb-wrap"></div>
+  <div class="landing-content">
+    <img src="image/image.png" alt="Rangla Punjab" class="crown-replace" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--gold); box-shadow: 0 0 30px rgba(212,175,55,0.5); transform: translateY(-20px);">
+    <p class="landing-pretitle">Welcome to</p>
+    <h1 class="landing-title">Rangla Punjab</h1>
+    <p class="landing-subtitle">FAMILY DHABA</p>
+    <p class="landing-tagline">Ghar jaisa swad, dil se bana khana</p>
+    <div class="gold-divider"><span>✦ &nbsp; ✦ &nbsp; ✦</span></div>
+    <button class="open-menu-btn" onclick="openMenu()"><span>📋 &nbsp; OPEN MENU</span></button>
+    <div class="landing-info">
+      <span class="info-pill">🌿 PURE VEG</span>
+      <span class="info-pill">🍗 NON-VEG</span>
+      <span class="info-pill">⏰ OPEN DAILY</span>
+    </div>
+  </div>
+</div>
+
+<!-- MENU SCREEN (unchanged) -->
+<div class="screen hidden" id="menuScreen">
+  <div class="texture"></div>
+  <div class="menu-header">
+    <div class="header-top">
+      <div class="header-logo">Rangla Punjab<small>Family Dhaba</small></div>
+      <button class="back-btn" onclick="goBack()">← Home</button>
+    </div>
+    <div class="menu-tabs">
+      <button class="tab-btn active" id="vegTab" onclick="switchSection('veg')"><span class="tab-dot veg"></span> Veg Menu</button>
+      <button class="tab-btn" id="nonvegTab" onclick="switchSection('nonveg')"><span class="tab-dot nonveg"></span> Non-Veg Menu</button>
+    </div>
+  </div>
+  <div class="menu-body">
+    <div class="menu-pages-wrap" id="pagesWrap"></div>
+  </div>
+  <div class="menu-footer">
+    <button class="nav-arrow" id="prevBtn" onclick="changePage(-1)" disabled>&#8592;</button>
+    <div class="nav-center">
+      <div class="nav-page-name" id="navPageName">Page 1</div>
+      <div class="nav-pi-dots" id="navDots"></div>
+    </div>
+    <button class="nav-arrow" id="nextBtn" onclick="changePage(1)">&#8594;</button>
+  </div>
+</div>
+
+<script>
+// ================ MENU DATA (same as before) ==================
+const VEG_DATA = [
+  { cat: "🥗 SALAD & PAPAD", type: "veg", items: [{ n: "Papad Roast", p: "20" }, { n: "Papad Fry", p: "30" }, { n: "Onion Salad", p: "30" }, { n: "Tomato Salad", p: "30" }, { n: "Cucumber Salad", p: "30" }, { n: "Masala Papad", p: "50" }, { n: "Green Salad", p: "80" }, { n: "Kachumbar Salad", p: "100" }, { n: "Curd Onion Salad", p: "100" }] },
+  { cat: "🍲 VEG SOUP", type: "veg", items: [{ n: "Veg Hot & Sour Soup", p: "100" }, { n: "Veg Sweet Corn Soup", p: "100" }, { n: "Veg Manchow Soup", p: "100" }, { n: "Veg Lemon Coriander Soup", p: "150" }] },
+  { cat: "🍟 VEG SNACKS", type: "veg", items: [{ n: "Finger Chips", p: "90" }, { n: "Chana Roast", p: "140" }, { n: "Crispy Corn", p: "140" }, { n: "Veg Manchurian Dry", p: "150" }, { n: "Potato Bowl", p: "150" }, { n: "Veg Chowmein", p: "150" }, { n: "Gobhi Chilli", p: "180" }, { n: "Veg Manchurian Gravy", p: "170" }, { n: "Veg Hakka Noodles", p: "170" }, { n: "Chana Chilli", p: "180" }, { n: "Corn Chilli", p: "180" }, { n: "Veg Chilli", p: "200" }, { n: "Gobhi 65", p: "200" }, { n: "Veg 65", p: "220" }, { n: "Hara Bhara Kabab", p: "250" }, { n: "Baby Corn Chilli", p: "250" }, { n: "Paneer 65", p: "250" }, { n: "Mushroom Chilli", p: "300" }, { n: "Paneer Fry", p: "300" }, { n: "Paneer Pakoda", p: "250" }, { n: "Paneer Manchurian Dry", p: "250" }, { n: "Paneer Manchurian Gravy", p: "270" }, { n: "Paneer Chilli", hf: ["160", "300"] }, { n: "Paneer Tikka", p: "300" }] },
+  { cat: "🍛 DAL", type: "veg", items: [{ n: "Plain Dal", p: "80" }, { n: "Dal Fry", p: "90" }, { n: "Dal Butter", p: "110" }, { n: "Dal Tadka", p: "120" }, { n: "Dal Punjabi", p: "130" }, { n: "Dal Double Tadka", p: "140" }, { n: "Dal Mughlai", p: "140" }, { n: "Dal Kolhapuri", p: "140" }, { n: "Dal Makhani", p: "160" }, { n: "Dal Snacks", p: "150" }, { n: "Dal Maharani", p: "160" }, { n: "Dal Do Pyaza", p: "160" }] },
+  { cat: "🍄 MUSHROOM", type: "veg", items: [{ n: "Mushroom Masala", p: "250" }, { n: "Mushroom Kadai", p: "250" }, { n: "Mushroom Do Pyaza", p: "250" }, { n: "Mushroom Kolhapuri", p: "250" }, { n: "Mushroom Butter Masala", p: "250" }, { n: "Mushroom Babycorn", p: "250" }] },
+  { cat: "🍞 ROTI & NAAN", type: "veg", items: [{ n: "Tandoori Roti", p: "15" }, { n: "Butter Roti", p: "20" }, { n: "Plain Naan", p: "40" }, { n: "Butter Naan", p: "45" }, { n: "Garlic Naan", p: "70" }] },
+  { cat: "🫓 TANDOORI PARATHA", type: "veg", items: [{ n: "Laccha Paratha", p: "50" }, { n: "Aloo Paratha", p: "70" }, { n: "Gobhi Paratha", p: "70" }, { n: "Veg Kulcha", p: "80" }, { n: "Paneer Kulcha", p: "100" }, { n: "Paneer Paratha", p: "100" }, { n: "Chole Bhature", p: "150" }] },
+  { cat: "🍚 RICE", type: "veg", items: [{ n: "Plain Rice", hf: ["50", "90"] }, { n: "Jeera Rice", hf: ["70", "120"] }, { n: "Tomato Onion Jeera Rice", p: "150" }, { n: "Green Peas Pulao", p: "150" }, { n: "Curd Rice", p: "150" }, { n: "Lemon Rice", p: "150" }, { n: "Masala Rice", p: "150" }, { n: "Dal Lapeta Rice", p: "150" }, { n: "Veg Pulao", p: "180" }, { n: "Veg Fried Rice", p: "180" }, { n: "Veg Biryani", p: "180" }, { n: "Kashmiri Pulao", p: "200" }, { n: "Mix Fried Rice", p: "200" }, { n: "Veg Schezwan Fried Rice", p: "200" }, { n: "Paneer Fried Rice", p: "220" }] },
+  { cat: "🧀 PANEER KA KHAZANA", type: "veg", items: [{ n: "Paneer Butter Masala", p: "240" }, { n: "Paneer Masala", p: "240" }, { n: "Paneer Kolhapuri", p: "240" }, { n: "Paneer Korma", p: "240" }, { n: "Paneer Hyderabadi", p: "240" }, { n: "Corn Paneer Masala", p: "240" }, { n: "Babycorn Paneer", p: "240" }, { n: "Paneer Patiala", p: "300" }, { n: "Paneer Maharaja", p: "300" }, { n: "Paneer Punjabi Kali", p: "300" }, { n: "Paneer Tikka Masala", p: "320" }] },
+  { cat: "🥦 VEG KI BAHAR", type: "veg", items: [{ n: "Aloo Gobhi", p: "140" }, { n: "Aloo Matar", p: "140" }, { n: "Aloo Palak", p: "140" }, { n: "Aloo Jeera", p: "140" }, { n: "Bhindi Do Pyaza", p: "160" }, { n: "Kadi Pakoda", p: "160" }, { n: "Rajma Masala", p: "160" }, { n: "Aloo Gobhi Masala", p: "170" }, { n: "Aloo Gobhi Matar Masala", p: "170" }, { n: "Matar Masala", p: "170" }, { n: "Aloo Dum", p: "180" }, { n: "Chana Masala", p: "180" }, { n: "Sev Tamatar", p: "180" }, { n: "Sev Bhaji", p: "200" }, { n: "Aloo Dum Kashmiri", p: "200" }, { n: "Corn Palak", p: "200" }, { n: "Mix Veg", p: "200" }, { n: "Methi Matar Masala", p: "200" }, { n: "Veg Keema Curry", p: "200" }, { n: "Stuffed Tomato", p: "200" }, { n: "Veg Kofta", p: "220" }, { n: "Veg Kadai", p: "220" }, { n: "Veg Kolhapuri", p: "220" }, { n: "Stuffed Capsicum", p: "220" }, { n: "Babycorn Masala", p: "220" }, { n: "Veg Do Pyaza", p: "220" }, { n: "Methi Matar Malai", p: "240" }, { n: "Veg Khazana", p: "260" }, { n: "Navratan Korma", p: "260" }, { n: "Veg Patiala", p: "260" }, { n: "Veg Jaipuri", p: "260" }, { n: "Babycorn Mushroom Masala", p: "260" }, { n: "Malai Kofta", p: "300" }, { n: "Kaju Curry", p: "320" }] },
+  { cat: "🥛 DAHI / RAITA", type: "veg", items: [{ n: "Plain Dahi", p: "70" }, { n: "Boondi Raita", p: "90" }, { n: "Veg Raita", p: "120" }, { n: "Pineapple Raita", p: "120" }] },
+  { cat: "❄️ WINTER SPECIAL", type: "veg", items: [{ n: "Makke Ki Roti", p: "40" }, { n: "Gajar Ka Halwa", p: "50" }, { n: "Sarso Ka Saag", p: "180" }] },
+  { cat: "🍨 SWEETS", type: "veg", items: [{ n: "Kheer", p: "50" }, { n: "Ice Cream", p: "MRP" }] }
+];
+
+const NONVEG_DATA = [
+  { cat: "🍗 NON-VEG SNACKS", type: "nonveg", items: [{ n: "Tandoori Tangadi", p: "150" }, { n: "Egg Chowmein", p: "190" }, { n: "Chicken Chowmein", p: "230" }, { n: "Chicken Lollipop", p: "250" }, { n: "Chicken 65", p: "300" }, { n: "Chicken Pakoda (Bone)", hf: ["160", "300"] }, { n: "Chicken Chilli Bone Dry", hf: ["180", "300"] }, { n: "Chicken Chilli Bone Gravy", hf: ["200", "320"] }, { n: "Chicken Pakoda (Boneless)", hf: ["180", "320"] }, { n: "Chicken Chilli Boneless Dry", hf: ["200", "350"] }, { n: "Chicken Chilli Boneless Gravy", hf: ["220", "370"] }, { n: "Garlic Chicken", p: "350" }, { n: "Chicken Roast", hf: ["250", "500"] }, { n: "Tandoori Chicken", hf: ["250", "500"] }] },
+  { cat: "🐟 FISH", type: "nonveg", items: [{ n: "Fish Roast", hf: ["120", "240"] }, { n: "Fish Chilli", p: "350" }, { n: "Fish Tikka", p: "350" }, { n: "Fish Finger", p: "350" }, { n: "Fish Pakoda", p: "350" }, { n: "Fish Curry", hf: ["140", "280"] }, { n: "Fish Masala", hf: ["160", "320"] }] },
+  { cat: "🥚 EGG", type: "nonveg", items: [{ n: "Egg Pouch", p: "70" }, { n: "Omelette", p: "90" }, { n: "Egg Bhurji", p: "100" }, { n: "Egg Bhurji Tari", p: "100" }, { n: "Egg Curry", p: "110" }, { n: "Egg Masala", p: "140" }, { n: "Egg Biryani", p: "130" }] },
+  { cat: "🍲 NON-VEG SOUP", type: "nonveg", items: [{ n: "Hot & Sour Soup", p: "140" }, { n: "Manchow Soup", p: "140" }, { n: "Lemon Coriander Soup", p: "140" }] },
+  { cat: "🍚 RICE (NON-VEG)", type: "nonveg", items: [{ n: "Egg Fried Rice", p: "190" }, { n: "Chicken Fried Rice", p: "250" }, { n: "Chicken Schezwan Fried Rice", p: "260" }, { n: "Chicken Biryani", hf: ["140", "280"] }] },
+  { cat: "🍗 CHICKEN MAIN COURSE", type: "nonveg", items: [{ n: "Chicken Curry", hf: ["120", "240"] }, { n: "Chicken Masala", hf: ["140", "280"] }, { n: "Chicken Butter Masala", hf: ["160", "300"] }, { n: "Chicken Kadai", hf: ["300", "600"] }, { n: "Chicken Do Pyaza", hf: ["350", "700"] }, { n: "Chicken Sauji", hf: ["350", "700"] }, { n: "Chicken Bhuna", hf: ["350", "700"] }, { n: "Chicken Kolhapuri", hf: ["350", "700"] }, { n: "Chicken Rara Masala", hf: ["350", "700"] }, { n: "Chicken Patiala", hf: ["350", "700"] }, { n: "Chicken Punjabi", hf: ["400", "750"] }, { n: "Chicken Tikka Masala", hf: ["400", "750"] }, { n: "Chicken Dhaba Special", hf: ["400", "750"] }] },
+  { cat: "🥛 DAHI / RAITA", type: "nonveg", items: [{ n: "Plain Dahi", p: "70" }, { n: "Boondi Raita", p: "90" }, { n: "Veg Raita", p: "120" }, { n: "Pineapple Raita", p: "120" }] },
+  { cat: "🍨 SWEETS", type: "nonveg", items: [{ n: "Kheer", p: "50" }, { n: "Ice Cream", p: "MRP" }] }
+];
+
+// ================ MENU LOGIC ==================
+function buildPages(data, type) {
+  if (type === 'veg') {
+    return [
+      [data[0], data[1]],
+      [data[2]],
+      [data[3], data[4]],
+      [data[5], data[6]],
+      [data[7]],
+      [data[8]],
+      [data[9]],
+      [data[10], data[11], data[12]]
+    ].filter(p => p.length > 0 && p[0] !== undefined);
+  }
+  if (type === 'nonveg') {
+    return [
+      [data[0]],
+      [data[1], data[2]],
+      [data[3], data[4]],
+      [data[5]],
+      [data[6], data[7]]
+    ].filter(p => p.length > 0 && p[0] !== undefined);
+  }
+  return [];
+}
+
+function renderItem(item, type) {
+  const dotCls = type === 'veg' ? 'veg' : 'nonveg';
+  let priceHtml = '';
+  if (item.hf) {
+    priceHtml = `<div class="hf-price"><div class="hf-tag"><small>Half</small><strong>${item.hf[0]}</strong></div><div class="hf-tag"><small>Full</small><strong>${item.hf[1]}</strong></div></div>`;
+  } else if (item.p === 'MRP') {
+    priceHtml = `<div class="item-price" style="color:var(--gold-dark)">MRP</div>`;
+  } else {
+    priceHtml = `<div class="item-price">${item.p}</div>`;
+  }
+  return `<div class="menu-item"><span class="item-dot ${dotCls}"></span><span class="item-name">${item.n}</span><span class="item-dots-line"></span>${priceHtml}</div>`;
+}
+
+function renderCat(cat, type) {
+  return `<div class="cat-block"><div class="cat-header"><span class="cat-icon">${cat.cat.split(' ')[0]}</span><span class="cat-title">${cat.cat.replace(/^[\S]+\s/, '')}</span><span class="cat-count">${cat.items.length} items</span></div>${cat.items.map(i => renderItem(i, type)).join('')}</div>`;
+}
+
+let currentSection = 'veg';
+let currentPageIdx = 0;
+let vegPages = [], nonvegPages = [], activePages = [];
+let isAnimating = false;
+
+function buildAllPages() {
+  vegPages = buildPages(VEG_DATA, 'veg');
+  nonvegPages = buildPages(NONVEG_DATA, 'nonveg');
+}
+
+function renderPages(type) {
+  const wrap = document.getElementById('pagesWrap');
+  wrap.innerHTML = '';
+  const pages = type === 'veg' ? vegPages : nonvegPages;
+  activePages = pages;
+  pages.forEach((pageCats, idx) => {
+    const div = document.createElement('div');
+    div.className = 'menu-page' + (idx === 0 ? ' active' : '');
+    div.id = `page-${idx}`;
+    div.innerHTML = pageCats.map(c => renderCat(c, type)).join('');
+    wrap.appendChild(div);
+  });
+  currentPageIdx = 0;
+  buildDots();
+  updateNav();
+}
+
+function buildDots() {
+  const nd = document.getElementById('navDots');
+  nd.innerHTML = '';
+  activePages.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'nav-dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goToPage(i);
+    nd.appendChild(d);
+  });
+  updateNavPageName();
+}
+
+function updateNavPageName() {
+  document.getElementById('navPageName').textContent = `Page ${currentPageIdx + 1} / ${activePages.length}`;
+}
+
+function updateNav() {
+  document.getElementById('prevBtn').disabled = currentPageIdx === 0;
+  document.getElementById('nextBtn').disabled = currentPageIdx === activePages.length - 1;
+  document.querySelectorAll('.nav-dot').forEach((d, i) => d.classList.toggle('active', i === currentPageIdx));
+  updateNavPageName();
+}
+
+function goToPage(next) {
+  if (next === currentPageIdx || isAnimating) return;
+  isAnimating = true;
+  const old = document.getElementById(`page-${currentPageIdx}`);
+  const nw = document.getElementById(`page-${next}`);
+  const goRight = next > currentPageIdx;
+
+  nw.style.transition = 'none';
+  nw.style.transform = goRight ? 'translateX(100%)' : 'translateX(-100%)';
+  nw.style.opacity = '1';
+  nw.classList.add('active');
+  nw.getBoundingClientRect();
+
+  const dur = '0.55s cubic-bezier(0.77,0,0.175,1)';
+  nw.style.transition = 'transform ' + dur;
+  old.style.transition = 'transform ' + dur + ', opacity ' + dur;
+  nw.style.transform = 'translateX(0)';
+  old.style.transform = goRight ? 'translateX(-100%)' : 'translateX(100%)';
+  old.style.opacity = '0';
+
+  nw.scrollTop = 0;
+
+  setTimeout(() => {
+    old.classList.remove('active');
+    old.style.transition = old.style.transform = old.style.opacity = '';
+    nw.style.transition = '';
+    isAnimating = false;
+  }, 580);
+
+  currentPageIdx = next;
+  updateNav();
+}
+
+function changePage(dir) {
+  const n = currentPageIdx + dir;
+  if (n < 0 || n >= activePages.length) return;
+  goToPage(n);
+}
+
+function switchSection(type) {
+  if (type === currentSection) return;
+  currentSection = type;
+  document.getElementById('vegTab').classList.toggle('active', type === 'veg');
+  document.getElementById('nonvegTab').classList.toggle('active', type === 'nonveg');
+  renderPages(type);
+}
+
+function openMenu() {
+  const ov = document.getElementById('overlay');
+  ov.classList.add('show');
+  setTimeout(() => {
+    document.getElementById('landing').classList.add('hidden');
+    document.getElementById('menuScreen').classList.remove('hidden');
+    buildAllPages();
+    renderPages('veg');
+    ov.classList.remove('show');
+  }, 380);
+}
+
+function goBack() {
+  const ov = document.getElementById('overlay');
+  ov.classList.add('show');
+  setTimeout(() => {
+    document.getElementById('menuScreen').classList.add('hidden');
+    document.getElementById('landing').classList.remove('hidden');
+    ov.classList.remove('show');
+  }, 380);
+}
+
+// Touch swipe
+let touchX = 0;
+document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+document.addEventListener('touchend', e => {
+  if (!document.getElementById('menuScreen').classList.contains('hidden')) {
+    const diff = touchX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 55) changePage(diff > 0 ? 1 : -1);
+  }
+});
+
+// Keyboard arrows
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('menuScreen').classList.contains('hidden')) {
+    if (e.key === 'ArrowRight') changePage(1);
+    if (e.key === 'ArrowLeft') changePage(-1);
+  }
+});
+
+// Ambient particles
+const ambWrap = document.getElementById('amb-wrap');
+for (let i = 0; i < 28; i++) {
+  const p = document.createElement('div');
+  p.className = 'amb-particle';
+  const size = 3 + Math.random() * 8;
+  p.style.cssText = `
+    width: ${size}px; height: ${size}px;
+    left: ${Math.random() * 100}%;
+    bottom: ${Math.random() * 40}%;
+    --t: ${5 + Math.random() * 12}s;
+    --op: ${0.1 + Math.random() * 0.25};
+    animation-delay: ${Math.random() * 10}s;
+  `;
+  ambWrap.appendChild(p);
+}
+</script>
+</body>
+</html>
